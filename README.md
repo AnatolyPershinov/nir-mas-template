@@ -1,8 +1,13 @@
-# <Project name>
+# NIR for the mas-science project
 
 [Русская версия](README.ru.md)
 
-Semester research project (NIR) started from the [lab template](https://github.com/Industrial-AI-Research-Lab/nir-project-template). Replace this paragraph with the purpose of the project: the question, the data, the expected result.
+Semester student research projects (NIR) for the mas-science project, started from the [lab template](https://github.com/Industrial-AI-Research-Lab/nir-project-template). Each one builds a standalone tool next to the project on adaptive assembly of a multi-agent text2app pipeline. Four topics:
+
+- **1A** — structural complexity of a requirements specification as a predictor of generation cost and success;
+- **1B** — underspecification of a requirements specification: a measure based on the spread of independent interpretations;
+- **2.1** — acceptance tests from a textual task description;
+- **2.6** — a checklist judge of requirements coverage (metric Q2).
 
 ## Quick start
 
@@ -15,7 +20,7 @@ make run                      # one experiment: configs/smoke.yaml -> an MLflow 
 make mlflow                   # MLflow UI over the local mlflow.db
 ```
 
-Rename the package once: `make rename NAME=<your_package>`, then `uv lock`.
+Clone with `--recurse-submodules`, otherwise `.agents/overlay` stays empty. The package is already renamed to `nir_mas_science`.
 
 ## Layout
 
@@ -34,7 +39,7 @@ results/             tables and figures exported from code
 
 ## Data
 
-Where the data lives and how to fetch it: <fill in>.
+The projects use the open benchmarks WebGen-Bench and DevAI. The data is not committed: `data/` is ignored. Where to get it and with which command: <fill in>.
 
 ## Experiments
 
@@ -49,7 +54,7 @@ Every run is recorded in MLflow (`MLFLOW_TRACKING_URI` in `.env`, the local `mlf
 
 ## LLM assistants
 
-Which agents you use and for what: <fill in>. Their instructions: [AGENTS.md](AGENTS.md); the shared lab rules are connected by `make overlay` ([nir-agent-overlay](https://github.com/Industrial-AI-Research-Lab/nir-agent-overlay)). You are responsible for code written with an agent.
+Pull requests are reviewed by the supervisor's AI assistant. Which agents the authors use and for what: <fill in>. Their instructions: [AGENTS.md](AGENTS.md); the shared lab rules are connected by `make overlay` as the submodule `.agents/overlay` ([nir-agent-overlay](https://github.com/Industrial-AI-Research-Lab/nir-agent-overlay), tag v0.1.0). The author is responsible for code written with an agent.
 
 ## Guides
 
