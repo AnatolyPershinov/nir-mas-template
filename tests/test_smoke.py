@@ -4,8 +4,8 @@ from pathlib import Path
 
 import pytest
 
-from nir_project.config import Settings
-from nir_project.pipeline import ExperimentConfig, run_experiment
+from nir_mas_science.config import Settings
+from nir_mas_science.pipeline import ExperimentConfig, run_experiment
 
 CONFIG = Path(__file__).resolve().parents[1] / "configs" / "smoke.yaml"
 
