@@ -33,6 +33,8 @@ packages = ["src/nir_project"]
 line-length = 100
 target-version = "py312"
 src = ["src", "tests"]
+# The lab overlay is a pinned submodule with its own checks; lint only this project's code.
+extend-exclude = [".agents/overlay"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "N", "W", "SIM"]
