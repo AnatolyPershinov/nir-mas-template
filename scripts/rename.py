@@ -20,7 +20,10 @@ ROOT_FILES = [
 
 def replace_in(path: Path, old: str, new: str) -> None:
     text = path.read_text(encoding="utf-8")
-    updated = text.replace(old, new).replace(old.replace("_", "-"), new.replace("_", "-"))
+    updated = text.replace(old, new)
+    # The hyphenated name also occurs in links to the template repository; leave those alone.
+    hyphenated = re.escape(old.replace("_", "-")) + r"(?!-template)"
+    updated = re.sub(hyphenated, new.replace("_", "-"), updated)
     if updated != text:
         path.write_text(updated, encoding="utf-8")
         print(f"updated {path}")
