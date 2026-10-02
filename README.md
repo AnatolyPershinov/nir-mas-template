@@ -4,9 +4,21 @@
 
 Semester research project (NIR) around the mas-science project. The repository was created from a [template](https://github.com/AnatolyPershinov/nir-mas-template) built on the [lab template](https://github.com/Industrial-AI-Research-Lab/nir-project-template). Replace this paragraph with the purpose of the project: the question, the data, the expected result.
 
+## Why this template
+
+The template makes the work run, from day one, the way it will later be reviewed and defended.
+It does four things.
+
+- **The work is visible.** A semester project is assessed by the repository, not by what is said at a meeting: pull requests show what was done and why, the commit history shows that the work went on steadily. The PR template, the experiment form and the decision log are already in `.github/` and `docs/`.
+- **The result can be repeated.** Every number in the report leads to an MLflow run, and the run to a commit, a config and a seed. `uv.lock` pins the environment, and the supervisor runs the project from a clean clone with the commands in this README. Reproducibility is a requirement, and it cannot be added at the end of the semester: either it is kept from the start or it does not exist.
+- **Mistakes are caught before review.** One command, `make check`, runs before every commit, in CI and in the LLM assistant's hook. Secrets, large files, failing tests and wrong branch names are stopped by a machine, so review time goes to the substance.
+- **Nothing to set up.** The layout, the linter, type checks, tests, CI and the rules for LLM assistants are assembled and tested. The week that setup would take stays for research.
+
+The template does not set the topic, the architecture or the method: that is your work. It is the same for every student of the project, so the supervisor opens any repository and knows where things are.
+
 ## First run after "Use this template"
 
-Do this once, in the first week. Remove this section in your first pull request.
+Do this once, in the first week. Remove this section and "Why this template" in your first pull request: your README keeps the description of your project.
 
 1. Create the repository from the template in your personal account: the **Use this template** button, name `nir-<topic>`. A public repository is recommended: only there GitHub enforces `main` protection and automatic review requests for free.
 2. Clone with submodules: `git clone --recurse-submodules git@github.com:<you>/<repository>.git`. If `.agents/overlay` is empty, run `git submodule update --init`.
