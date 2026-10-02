@@ -1,13 +1,21 @@
-# НИР при проекте mas-science
+# <Название проекта>
 
 [English version](README.md)
 
-Семестровые студенческие НИР при проекте mas-science, начатые с [шаблона лаборатории](https://github.com/Industrial-AI-Research-Lab/nir-project-template). Каждая работа строит самостоятельный инструмент рядом с проектом адаптивной сборки мультиагентного text2app-конвейера. Четыре темы:
+Семестровая НИР при проекте mas-science. Репозиторий создан из [шаблона](https://github.com/AnatolyPershinov/nir-mas-template), который построен на [шаблоне лаборатории](https://github.com/Industrial-AI-Research-Lab/nir-project-template). Замените этот абзац описанием проекта: вопрос, данные, ожидаемый результат.
 
-- **1A** — структурная сложность ТЗ как предиктор стоимости и успешности генерации;
-- **1B** — недоопределённость ТЗ: мера через разброс независимых интерпретаций;
-- **2.1** — приёмочные тесты по текстовому описанию задачи;
-- **2.6** — чек-лист-судья покрытия требований (метрика Q2).
+## Первый запуск после «Use this template»
+
+Сделайте это один раз, в первую неделю. Раздел удалите первым же pull request.
+
+1. Создайте репозиторий из шаблона в личном аккаунте: кнопка **Use this template**, имя `nir-<тема>`. Рекомендуем публичный: только там GitHub бесплатно обеспечивает защиту ветки `main` и автоматический запрос ревью.
+2. Клонируйте с подмодулями: `git clone --recurse-submodules git@github.com:<вы>/<репозиторий>.git`. Если папка `.agents/overlay` пуста, выполните `git submodule update --init`.
+3. Создайте ветку `chore/project-setup` и переименуйте пакет: `make rename NAME=<имя_пакета>`, затем `uv lock`.
+4. Подготовьте окружение командами из раздела «Быстрый старт» и убедитесь, что `make check` проходит.
+5. Дайте доступ руководителю: Settings → Collaborators → `AnatolyPershinov`, право Write. В `.github/CODEOWNERS` он уже записан.
+6. Откройте первый pull request `chore: set up the project`: переименование пакета и описание проекта в этом README.
+
+Как работать дальше: [правила работы с git и GitHub](docs/git-workflow.ru.md). Прочитайте их до первого коммита.
 
 ## Быстрый старт
 
@@ -19,8 +27,6 @@ make check                    # ruff, mypy, pytest
 make run                      # один эксперимент: configs/smoke.yaml -> запуск в MLflow
 make mlflow                   # интерфейс MLflow над локальной базой mlflow.db
 ```
-
-Клонируйте с флагом `--recurse-submodules`, иначе папка `.agents/overlay` останется пустой. Пакет уже переименован в `nir_mas_science`.
 
 ## Структура
 
@@ -39,7 +45,7 @@ results/             таблицы и рисунки, экспортирова�
 
 ## Данные
 
-Работы используют открытые бенчмарки WebGen-Bench и DevAI. В репозиторий данные не кладутся: папка `data/` в `.gitignore`. Откуда и какой командой их получить: <заполните>.
+Данные в репозиторий не кладутся, в том числе открытые бенчмарки. Где лежат данные и как их получить: <заполните>.
 
 ## Эксперименты
 
@@ -50,15 +56,15 @@ results/             таблицы и рисунки, экспортирова�
 
 ## Проверки
 
-`make check` запускается из трёх мест: pre-commit на вашей машине, CI на каждом PR, хук агента. Ветка `<тип>/<короткое-описание>`, заголовок PR `<тип>: ...`; типы: feat, fix, refactor, docs, test, chore, exp.
+`make check` запускается из трёх мест: pre-commit на вашей машине, CI на каждом PR, хук агента. Ветка `<тип>/<короткое-описание>`, заголовок PR `<тип>: ...`; типы: feat, fix, refactor, docs, test, chore, exp. Подробно: [правила работы с git и GitHub](docs/git-workflow.ru.md).
 
 ## LLM-ассистенты
 
-Ревью pull request делает ИИ-ассистент руководителя. Какими агентами пользуются авторы и для чего: <заполните>. Инструкции для них: [AGENTS.md](AGENTS.md); общие правила лаборатории подключены командой `make overlay` как submodule `.agents/overlay` ([nir-agent-overlay](https://github.com/Industrial-AI-Research-Lab/nir-agent-overlay), тег v0.1.0). За код, написанный с агентом, отвечает автор.
+Какими агентами вы пользуетесь и для чего: <заполните>. Инструкции для них: [AGENTS.md](AGENTS.md); общие правила лаборатории уже подключены как подмодуль `.agents/overlay` на теге v0.1.0 ([nir-agent-overlay](https://github.com/Industrial-AI-Research-Lab/nir-agent-overlay)); другую версию подключает `make overlay OVERLAY_VERSION=<тег>`. За код, написанный с агентом, отвечаете вы.
 
 ## Памятки
 
-[Практические памятки](https://github.com/Industrial-AI-Research-Lab/project-implementation-manual/blob/master/nir-requirements/recommendations/README.ru.md) из руководства лаборатории: научные статьи, репозиторий и код, трекинг задач, агентные артефакты.
+[Практические памятки](https://github.com/Industrial-AI-Research-Lab/project-implementation-manual/blob/feat/practice-guides/nir-requirements/recommendations/README.ru.md) из руководства лаборатории: научные статьи, репозиторий и код, трекинг задач, агентные артефакты.
 
 ## Лицензия
 

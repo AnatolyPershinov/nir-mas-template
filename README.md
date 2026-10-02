@@ -1,13 +1,21 @@
-# NIR for the mas-science project
+# <Project name>
 
 [Русская версия](README.ru.md)
 
-Semester student research projects (NIR) for the mas-science project, started from the [lab template](https://github.com/Industrial-AI-Research-Lab/nir-project-template). Each one builds a standalone tool next to the project on adaptive assembly of a multi-agent text2app pipeline. Four topics:
+Semester research project (NIR) around the mas-science project. The repository was created from a [template](https://github.com/AnatolyPershinov/nir-mas-template) built on the [lab template](https://github.com/Industrial-AI-Research-Lab/nir-project-template). Replace this paragraph with the purpose of the project: the question, the data, the expected result.
 
-- **1A** — structural complexity of a requirements specification as a predictor of generation cost and success;
-- **1B** — underspecification of a requirements specification: a measure based on the spread of independent interpretations;
-- **2.1** — acceptance tests from a textual task description;
-- **2.6** — a checklist judge of requirements coverage (metric Q2).
+## First run after "Use this template"
+
+Do this once, in the first week. Remove this section in your first pull request.
+
+1. Create the repository from the template in your personal account: the **Use this template** button, name `nir-<topic>`. A public repository is recommended: only there GitHub enforces `main` protection and automatic review requests for free.
+2. Clone with submodules: `git clone --recurse-submodules git@github.com:<you>/<repository>.git`. If `.agents/overlay` is empty, run `git submodule update --init`.
+3. Create the branch `chore/project-setup` and rename the package: `make rename NAME=<your_package>`, then `uv lock`.
+4. Set up the environment with the commands from "Quick start" and make sure `make check` passes.
+5. Give the supervisor access: Settings → Collaborators → `AnatolyPershinov`, Write permission. He is already listed in `.github/CODEOWNERS`.
+6. Open the first pull request `chore: set up the project`: the package rename and the project description in this README.
+
+How to work from then on: [git and GitHub rules](docs/git-workflow.ru.md) (in Russian). Read them before the first commit.
 
 ## Quick start
 
@@ -19,8 +27,6 @@ make check                    # ruff, mypy, pytest
 make run                      # one experiment: configs/smoke.yaml -> an MLflow run
 make mlflow                   # MLflow UI over the local mlflow.db
 ```
-
-Clone with `--recurse-submodules`, otherwise `.agents/overlay` stays empty. The package is already renamed to `nir_mas_science`.
 
 ## Layout
 
@@ -39,7 +45,7 @@ results/             tables and figures exported from code
 
 ## Data
 
-The projects use the open benchmarks WebGen-Bench and DevAI. The data is not committed: `data/` is ignored. Where to get it and with which command: <fill in>.
+Data is not committed, open benchmarks included. Where the data lives and how to fetch it: <fill in>.
 
 ## Experiments
 
@@ -50,15 +56,15 @@ Every run is recorded in MLflow (`MLFLOW_TRACKING_URI` in `.env`, the local `mlf
 
 ## Checks
 
-`make check` runs from three places: pre-commit on your machine, CI on every PR, the agent hook. Branch `<type>/<short-description>`, PR title `<type>: ...`; the types are feat, fix, refactor, docs, test, chore, exp.
+`make check` runs from three places: pre-commit on your machine, CI on every PR, the agent hook. Branch `<type>/<short-description>`, PR title `<type>: ...`; the types are feat, fix, refactor, docs, test, chore, exp. Details: [git and GitHub rules](docs/git-workflow.ru.md).
 
 ## LLM assistants
 
-Pull requests are reviewed by the supervisor's AI assistant. Which agents the authors use and for what: <fill in>. Their instructions: [AGENTS.md](AGENTS.md); the shared lab rules are connected by `make overlay` as the submodule `.agents/overlay` ([nir-agent-overlay](https://github.com/Industrial-AI-Research-Lab/nir-agent-overlay), tag v0.1.0). The author is responsible for code written with an agent.
+Which agents you use and for what: <fill in>. Their instructions: [AGENTS.md](AGENTS.md); the shared lab rules are already connected as the submodule `.agents/overlay` pinned to v0.1.0 ([nir-agent-overlay](https://github.com/Industrial-AI-Research-Lab/nir-agent-overlay)); `make overlay OVERLAY_VERSION=<tag>` connects another version. You are responsible for code written with an agent.
 
 ## Guides
 
-[Practice guides](https://github.com/Industrial-AI-Research-Lab/project-implementation-manual/blob/master/nir-requirements/recommendations/README.md) of the lab manual: papers, repository and code, task tracking, agent artifacts.
+[Practice guides](https://github.com/Industrial-AI-Research-Lab/project-implementation-manual/blob/feat/practice-guides/nir-requirements/recommendations/README.md) of the lab manual: papers, repository and code, task tracking, agent artifacts.
 
 ## Licence
 
