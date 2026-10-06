@@ -1,7 +1,9 @@
 # AGENTS.md
 
 Instructions for LLM assistants working in this repository. People: read README.md first.
-If `.agents/overlay/AGENTS.md` exists, follow it too; this file wins on conflict.
+Also follow `.agents/overlay/AGENTS.md` and every file in `.agents/overlay/rules/`: read them
+before the first edit (Claude Code imports them from CLAUDE.md; Codex and others must open them).
+This file wins on conflict. Skills are in `.agents/skills/` (links into `.agents/overlay/skills/`).
 
 ## Project
 

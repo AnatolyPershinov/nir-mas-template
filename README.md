@@ -74,6 +74,8 @@ Every run is recorded in MLflow (`MLFLOW_TRACKING_URI` in `.env`, the local `mlf
 
 Which agents you use and for what: <fill in>. Their instructions: [AGENTS.md](AGENTS.md); the shared lab rules are already connected as the submodule `.agents/overlay` pinned to v0.1.0 ([nir-agent-overlay](https://github.com/Industrial-AI-Research-Lab/nir-agent-overlay)); `make overlay OVERLAY_VERSION=<tag>` connects another version. You are responsible for code written with an agent.
 
+Claude Code and Codex are both wired up: Claude reads `CLAUDE.md`, `.claude/rules/`, `.claude/skills/` and the hook in `.claude/settings.json`; Codex reads `AGENTS.md`, `.agents/skills/` and the hook in `.codex/hooks.json` (trust the project in Codex once, so its `.codex/` layer loads). The skill folders are links into the overlay, so both tools see the same skills. Any other assistant that reads `AGENTS.md` gets the rules by the pointer in its first lines.
+
 ## Guides
 
 [Practice guides](https://github.com/Industrial-AI-Research-Lab/project-implementation-manual/blob/feat/practice-guides/nir-requirements/recommendations/README.md) of the lab manual: papers, repository and code, task tracking, agent artifacts.
